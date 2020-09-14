@@ -1,0 +1,117 @@
+
+<div class="content">
+    <div class="inner-content">
+        <h2>SpaceX Launch Programs</h2>
+        <div class="left">
+            <div class="left-inner">
+              <h3><span class="filters">Filters</span></h3>
+              <div class="float-left w-100">
+                <div class="heading mb-10">
+                  Launch Year
+                </div>
+                <div class="filter-year align-center">
+                  <div class="w-50">
+                    <button class="btn" (click)="filterYearData(2006)" [ngClass]="{'btn-clicked' : params.launch_year == 2006}">2006</button>
+                  </div>
+                  <div class="w-50">
+                    <button class="btn" (click)="filterYearData(2007)" [ngClass]="{'btn-clicked' : params.launch_year == 2007}">2007</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2008)" [ngClass]="{'btn-clicked' : params.launch_year == 2008}">2008</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2009)" [ngClass]="{'btn-clicked' : params.launch_year == 2009}">2009</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2010)" [ngClass]="{'btn-clicked' : params.launch_year == 2010}">2010</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2011)" [ngClass]="{'btn-clicked' : params.launch_year == 2011}">2011</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2012)" [ngClass]="{'btn-clicked' : params.launch_year == 2012}">2012</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2013)" [ngClass]="{'btn-clicked' : params.launch_year == 2013}">2013</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2014)" [ngClass]="{'btn-clicked' : params.launch_year == 2014}">2014</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2015)" [ngClass]="{'btn-clicked' : params.launch_year == 2015}">2015</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2016)" [ngClass]="{'btn-clicked' : params.launch_year == 2016}">2016</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2017)" [ngClass]="{'btn-clicked' : params.launch_year == 2017}">2017</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2018)" [ngClass]="{'btn-clicked' : params.launch_year == 2018}">2018</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2019)" [ngClass]="{'btn-clicked' : params.launch_year == 2019}">2019</button>
+                  </div>
+                  <div class="w-50 mt-10">
+                    <button class="btn" (click)="filterYearData(2020)" [ngClass]="{'btn-clicked' : params.launch_year == 2020}">2020</button>
+                  </div> 
+                  <div class="w-50 mt-10"> &nbsp;
+                  </div>
+                </div>
+              </div>
+              
+              <div class="float-left w-100 mt-10">
+                <div class="heading mb-10">
+                  Successful Launch
+                </div> 
+                <div class="filter-year align-center">
+                  <div class="w-50">
+                    <button class="btn" [value]="1" (click)="filterLaunchData(1)" [ngClass]="{'btn-clicked' : params.launch_success === 1}">True</button>
+                  </div>
+                  <div class="w-50">
+                    <button class="btn" [value]="0" (click)="filterLaunchData(0)" [ngClass]="{'btn-clicked' : params.launch_success === 0}">False</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="float-left w-100 mt-10">
+                <div class="heading mb-10">
+                  Successful Landing
+                </div> 
+                <div class="filter-year align-center">
+                  <div class="w-50">
+                    <button class="btn" (click)="filterLandData(1)" [ngClass]="{'btn-clicked' : params.land_success === 1}">True</button>
+                  </div>
+                  <div class="w-50">
+                    <button class="btn" (click)="filterLandData(0)" [ngClass]="{'btn-clicked' : params.land_success === 0}">False</button> 
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+        <div class="right">
+
+          <div *ngFor="let p of landingData" class="product">
+              <div class="product-content">
+                <div class="product-img">
+                  <img src="{{ p.links.mission_patch_small }}" class="image">
+                </div>
+                <div class="mt-10 text-blue bold mb-10">
+                  {{ p.mission_name }} # {{p.fligh_number}}
+                </div>
+                <div class="mt-10">
+                  <div class="bold mb-2">Mission Ids :</div> {{p.mission_id}} <br>
+                  <div class="bold mb-2">Launch Year :</div> {{p.launch_year}} <br>
+                  <div class="bold mb-2">Successful Launch :</div> {{p.rocket.first_stage.cores.landing_intent}} <br>
+                  <div class="bold mb-2">Successful Landing :</div> {{p.rocket.first_stage.cores.land_success}} <br>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="landingData && !landingData[0]" class="align-center bold mt-100">No Data Found</div>
+        </div>
+        <!-- <div class="right2">
+            Right2
+        </div> -->
+    </div>
+</div>
